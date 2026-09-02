@@ -1,0 +1,6 @@
+{
+  "name": "DHAQAN-KAABA Accounting & Inventory",
+  "description": "A professional web-based retail accounting, inventory management, sales invoicing, cash flow, receivables, payables, and profit & loss system in Somali and English.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

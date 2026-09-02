@@ -1,0 +1,107 @@
+import { AppState, BusinessSettings, Product } from '../types';
+import { getTodayDateString, getCurrentTimeString } from './security';
+
+export const DEFAULT_SETTINGS: BusinessSettings = {
+  businessName: 'DHAQAN-KAABA',
+  phone: '+252 61 5000000',
+  address: 'Muqdisho, Soomaaliya',
+  currency: 'USD',
+  currencySymbol: '$',
+  invoicePrefix: 'INV-',
+  purchasePrefix: 'PUR-',
+  nextInvoiceNumber: 1,
+  nextPurchaseNumber: 1,
+  receiptFooterNote: 'Mahadsanid — DHAQAN-KAABA Hair Care',
+  hasCompletedSetup: false,
+  adminPasswordHash: '',
+  adminSalt: '',
+};
+
+export const INITIAL_HAIR_CARE_PRODUCTS: Product[] = [
+  {
+    id: 'prod_1',
+    name: 'Saliid 250ml',
+    costPrice: 1.90,
+    currentStock: 0,
+    minStockLevel: 5,
+    active: true,
+    createdAt: '2026-01-01 00:00:00',
+    updatedAt: '2026-01-01 00:00:00',
+  },
+  {
+    id: 'prod_2',
+    name: 'Saliid 500ml',
+    costPrice: 3.50,
+    currentStock: 0,
+    minStockLevel: 5,
+    active: true,
+    createdAt: '2026-01-01 00:00:00',
+    updatedAt: '2026-01-01 00:00:00',
+  },
+  {
+    id: 'prod_3',
+    name: 'Saliid Rag',
+    costPrice: 1.90,
+    currentStock: 0,
+    minStockLevel: 5,
+    active: true,
+    createdAt: '2026-01-01 00:00:00',
+    updatedAt: '2026-01-01 00:00:00',
+  },
+  {
+    id: 'prod_4',
+    name: 'Shampoo 500ml',
+    costPrice: 1.90,
+    currentStock: 0,
+    minStockLevel: 5,
+    active: true,
+    createdAt: '2026-01-01 00:00:00',
+    updatedAt: '2026-01-01 00:00:00',
+  },
+  {
+    id: 'prod_5',
+    name: 'Shampoo 1000ml',
+    costPrice: 3.50,
+    currentStock: 0,
+    minStockLevel: 5,
+    active: true,
+    createdAt: '2026-01-01 00:00:00',
+    updatedAt: '2026-01-01 00:00:00',
+  },
+  {
+    id: 'prod_6',
+    name: 'Hair Mask 500ml',
+    costPrice: 1.90,
+    currentStock: 0,
+    minStockLevel: 5,
+    active: true,
+    createdAt: '2026-01-01 00:00:00',
+    updatedAt: '2026-01-01 00:00:00',
+  },
+  {
+    id: 'prod_7',
+    name: 'Hair Mask 1000ml',
+    costPrice: 3.50,
+    currentStock: 0,
+    minStockLevel: 5,
+    active: true,
+    createdAt: '2026-01-01 00:00:00',
+    updatedAt: '2026-01-01 00:00:00',
+  },
+];
+
+export function createInitialCleanState(): AppState {
+  return {
+    settings: { ...DEFAULT_SETTINGS },
+    products: INITIAL_HAIR_CARE_PRODUCTS.map(p => ({ ...p })),
+    sales: [],
+    purchases: [],
+    expenses: [],
+    cashTransactions: [],
+    accountsReceivable: [],
+    receivablePayments: [],
+    accountsPayable: [],
+    payablePayments: [],
+    stockMovements: [],
+  };
+}
