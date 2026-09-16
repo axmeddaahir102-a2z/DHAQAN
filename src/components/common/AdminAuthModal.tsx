@@ -55,7 +55,7 @@ export const AdminAuthModal: React.FC<AdminAuthModalProps> = ({ isOpen, onClose,
           onSuccess();
           onClose();
         } else {
-          setError('Furaha sirta ah waa khalad! (Default: admin123)');
+          setError('Furaha sirta ah waa khalad! Fadlan hubi (Incorrect password).');
         }
       }
     } catch (err) {
@@ -127,9 +127,6 @@ export const AdminAuthModal: React.FC<AdminAuthModalProps> = ({ isOpen, onClose,
             </div>
             <p className="text-[11px] leading-relaxed text-slate-500">
               Qeybta Maamulaha waxaa ku jira xogta xasaasiga ah sida Dakhliga, Faa'iidada (Profit & Loss), Daymaha, Qasnadda, iyo Diiwaanka Dhacdooyinka.
-            </p>
-            <p className="text-[11px] text-emerald-700 font-mono mt-1.5 bg-emerald-50 px-2 py-1 rounded border border-emerald-200/60">
-              Furaha tusaalaha (Demo Password): <strong>admin123</strong>
             </p>
           </div>
 
