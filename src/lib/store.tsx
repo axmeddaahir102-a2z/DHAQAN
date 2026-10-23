@@ -113,7 +113,9 @@ interface StoreContextType {
   resetToDefaults: () => void;
   exportBackupJSON: () => string;
   restoreBackupJSON: (jsonString: string) => { success: boolean; error?: string };
+  mergeCloudState: (cloudData: Partial<AppState>) => void;
 }
+
 
 const StoreContext = createContext<StoreContextType | null>(null);
 
@@ -1028,6 +1030,24 @@ export const StoreProvider: React.FC<{ children: React.ReactNode }> = ({ childre
     }
   }, []);
 
+  const mergeCloudState = useCallback((cloudData: Partial<AppState>) => {
+
+    setState((prev) => ({
+      ...prev,
+      settings: cloudData.settings || prev.settings,
+      products: cloudData.products || prev.products,
+      sales: cloudData.sales || prev.sales,
+      purchases: cloudData.purchases || prev.purchases,
+      expenses: cloudData.expenses || prev.expenses,
+      cashTransactions: cloudData.cashTransactions || prev.cashTransactions,
+      accountsReceivable: cloudData.accountsReceivable || prev.accountsReceivable,
+      receivablePayments: cloudData.receivablePayments || prev.receivablePayments,
+      accountsPayable: cloudData.accountsPayable || prev.accountsPayable,
+      payablePayments: cloudData.payablePayments || prev.payablePayments,
+      stockMovements: cloudData.stockMovements || prev.stockMovements,
+    }));
+  }, []);
+
   return (
     <StoreContext.Provider
       value={{
@@ -1056,7 +1076,9 @@ export const StoreProvider: React.FC<{ children: React.ReactNode }> = ({ childre
         resetToDefaults,
         exportBackupJSON,
         restoreBackupJSON,
+        mergeCloudState,
       }}
+
     >
       {children}
     </StoreContext.Provider>
